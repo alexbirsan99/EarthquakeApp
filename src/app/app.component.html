@@ -1,0 +1,71 @@
+<mat-toolbar class="light-theme">
+    <button mat-button class="hamburger-menu" (click)="drawer.toggle()">
+            <span style="display:flex; align-items: center;">
+                <mat-icon>menu</mat-icon>
+            </span>
+    </button>
+
+
+
+    <span style="display:flex; align-items: center;">
+            <mat-icon style="padding-right: 8px;">monitor_heart</mat-icon>
+            Earthquake
+        </span>
+    <button class="menu-item list active" mat-button (click)="makeListActive()" [routerLink]="['']">
+        <span style="display:flex; align-items: center;">
+                <mat-icon style="padding-right: 8px;">grid_view</mat-icon>
+                <span style="display:flex; align-items: center;">List</span>
+        </span>
+    </button>
+    <button class="menu-item map" mat-button (click)="makeMapActive()" [routerLink]="['map']">
+        <span style="display:flex; align-items: center;">
+                <mat-icon style="padding-right: 8px;">map</mat-icon>
+                <span style="display:flex; align-items: center;">Map</span>
+        </span>
+    </button>
+    <div class="menu-item" style="display:flex; align-items: center; right:
+            48px !important; position: absolute;">
+        <span style="display:flex; align-items: center; padding-right:
+                16px;"><mat-icon>dark_mode</mat-icon></span>
+        <mat-slide-toggle (change)="changeTheme()" [checked]="themeChanger.getThemeCode()"></mat-slide-toggle>
+        <span style="display:flex; align-items: center; padding-left:
+                16px;"><mat-icon>light_mode</mat-icon></span>
+    </div>
+</mat-toolbar>
+
+
+<mat-drawer-container autosize class="light-theme" style="height: 100%;">
+
+    <mat-drawer #drawer mode="side" style="width: 100%;">
+        <div class="mobile-menu">
+            <p style="font-weight: 600; font-size: 24px;">
+                Menu
+            </p>
+            <button style="width: 100%;" class="mobile-item list-mobile mobile-item-active" mat-button (click)="makeListActive(); drawer.toggle();" [routerLink]="['']">
+                <span style="display:flex; align-items: center;">
+                        <mat-icon style="padding-right: 8px;">grid_view</mat-icon>
+                        <span style="display:flex; align-items: center;">List</span>
+                </span>
+            </button>
+            <button style="width: 100%;" class="mobile-item map-mobile" mat-button (click)="makeMapActive(); drawer.toggle();" [routerLink]="['map']">
+                <span style="display:flex; align-items: center;">
+                        <mat-icon style="padding-right: 8px;">map</mat-icon>
+                        <span style="display:flex; align-items: center;">Map</span>
+                </span>
+            </button>
+            <div style="display:flex; align-items: center; right:
+            48px !important; position: absolute;">
+                <span style="display:flex; align-items: center; padding-right:
+                16px;"><mat-icon>dark_mode</mat-icon></span>
+                <mat-slide-toggle (change)="changeTheme()" [checked]="themeChanger.getThemeCode()"></mat-slide-toggle>
+                <span style="display:flex; align-items: center; padding-left:
+                16px;"><mat-icon>light_mode</mat-icon></span>
+            </div>
+        </div>
+    </mat-drawer>
+
+    <router-outlet>
+
+    </router-outlet>
+
+</mat-drawer-container>

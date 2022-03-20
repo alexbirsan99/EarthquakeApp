@@ -1,0 +1,56 @@
+.mat-button {
+    margin-left: 16px;
+    font-size: 16px;
+}
+
+.active {
+    background-color: #512da8;
+}
+
+.hamburger-menu {
+    display: none;
+    height: 100% !important;
+}
+
+.mat-drawer {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .menu-item {
+        display: none !important;
+    }
+    .hamburger-menu {
+        margin-right: 24px;
+        margin-left: -24px;
+        display: inline;
+    }
+    .mat-drawer {
+        display: block;
+    }
+}
+
+.list-mobile {
+    margin: 0px !important;
+}
+
+.map-mobile {
+    margin: 0px !important;
+}
+
+.mobile-menu {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 24px;
+    padding: 32px;
+}
+
+.mobile-item {
+    padding: 8px 8px !important;
+    border-radius: 6px;
+}
+
+.mobile-item-active {
+    color: #673ab7 !important;
+    background-color: #b39ddb !important;
+}

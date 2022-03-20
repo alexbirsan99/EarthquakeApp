@@ -1,0 +1,13 @@
+<mat-card>
+    <div style="width:100%;">
+        <div class="mag-container">
+            <div class="mag" [ngStyle]="getMagColor()">
+                {{getMag(earthquake.properties.mag)}}
+            </div>
+        </div>
+    </div>
+    <p><b>{{earthquake.properties.place}}</b></p>
+    <p>{{getDateString(earthquake.properties.time)}} at {{getTimeString(earthquake.properties.time)}}</p>
+    <p>Tsunami: {{earthquake.properties.tsunami?'Yes':'No'}}</p>
+    <a target="_blank" href="{{earthquake.properties.url}}" style="margin-bottom: 16px; color: #42a5f5;">See More on USGS</a>
+</mat-card>

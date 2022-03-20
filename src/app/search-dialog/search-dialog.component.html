@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>Filter Earthquakes</h2>
+<mat-dialog-content>
+
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Period</mat-label>
+        <mat-date-range-input [max]="maxDate" [formGroup]="periodSearch" [rangePicker]="period" [comparisonStart]="searchEarthquake.startDateUNIX" [comparisonEnd]="searchEarthquake.endDateUNIX">
+            <input matStartDate placeholder="Start date" formControlName="start">
+            <input matEndDate placeholder="End date" formControlName="end">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="period"></mat-datepicker-toggle>
+        <mat-date-range-picker #period></mat-date-range-picker>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Latitude</mat-label>
+        <input [(ngModel)]="searchEarthquake.latitude" matInput placeholder="Ex. 20.56" [formControl]="latitude">
+        <mat-error>Lat. must be between 90 and -90.</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field name="longitude" appearance="outline" style="margin-left: 16px;">
+        <mat-label>Longitude</mat-label>
+        <input [(ngModel)]="searchEarthquake.longitude" matInput placeholder="Ex. 30.42" [formControl]="longitude">
+        <mat-error>Long. must be between 90 and -90.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 16px;">
+        <mat-label>Radius</mat-label>
+        <input [(ngModel)]="searchEarthquake.radius" matInput placeholder="Ex. 4km">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Min. Magnitude</mat-label>
+        <input [(ngModel)]="searchEarthquake.minMag" matInput placeholder="Ex. 2.0" [formControl]="minMag">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" style="margin-left: 16px;">
+        <mat-label>Max. Magnitude</mat-label>
+        <input [(ngModel)]="searchEarthquake.maxMag" matInput placeholder="Ex. 4.5" [formControl]="maxMag">
+    </mat-form-field>
+
+    <mat-error *ngIf="!validLatLong">Long. and Lat. must be between 90 and -90.</mat-error>
+    <mat-error *ngIf="!validMinMaxMag">Min. mag. should be less than max. mag.</mat-error>
+    <mat-error *ngIf="sameDates">Incorrect date range.</mat-error>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="search()" type="button" cdkFocusInitial>Search</button>
+</mat-dialog-actions>
