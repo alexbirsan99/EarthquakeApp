@@ -1,6 +1,5 @@
 # Earthquake
 
----
 
 Earthquake app was made using Angular and USGS.gov API.
 <br>
